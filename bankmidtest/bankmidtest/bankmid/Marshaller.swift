@@ -14,7 +14,7 @@ class Marshaller: NSObject {
         let jsonData =  try! jsonEncoder.encode(object)
         
         let jsonString = String(data: jsonData, encoding: .utf8)
-        print(jsonString)
+
         return jsonData
     }
     

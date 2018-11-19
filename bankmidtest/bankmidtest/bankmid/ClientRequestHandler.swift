@@ -51,7 +51,7 @@ class TCPClientRequestHandler: ClientRequestHandler {
         var data : [Byte]? = nil
             
         while data == nil {
-            data = self.client.read(1024*10, timeout: -1)
+            data = self.client.read(1024*10, timeout: 10)
         }
 
         return Data(bytes: data!)

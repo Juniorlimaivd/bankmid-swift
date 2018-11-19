@@ -14,7 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let requestor = Requestor()
-        requestor.invoke()
+        
+        let request = requestor.createRequestPacket(methodName: "Transfer", args: "ACC4", "ACC2", 50.0)
+        let ret = requestor.invoke(request)
+        
+        //print(ret)
         
 //        let requestHandler = TCPClientRequestHandler()
 //        requestHandler.connect()
