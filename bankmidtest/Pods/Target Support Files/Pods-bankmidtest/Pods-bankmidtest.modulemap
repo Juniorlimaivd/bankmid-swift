@@ -1,0 +1,6 @@
+framework module Pods_bankmidtest {
+  umbrella header "Pods-bankmidtest-umbrella.h"
+
+  export *
+  module * { export * }
+}
