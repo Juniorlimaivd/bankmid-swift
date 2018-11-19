@@ -20,6 +20,8 @@
 		F7480F9521A1E7B300FFC74C /* ClientRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7480F9421A1E7B300FFC74C /* ClientRequestHandler.swift */; };
 		F79EC3AD21A2039C005C10AF /* Marshaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EC3AC21A2039C005C10AF /* Marshaller.swift */; };
 		F79EC3B021A20723005C10AF /* Requestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EC3AF21A20723005C10AF /* Requestor.swift */; };
+		F79EC3B221A2FC72005C10AF /* BankProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EC3B121A2FC72005C10AF /* BankProxy.swift */; };
+		F79EC3B421A2FCBA005C10AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EC3B321A2FCBA005C10AF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		F7480F9421A1E7B300FFC74C /* ClientRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequestHandler.swift; sourceTree = "<group>"; };
 		F79EC3AC21A2039C005C10AF /* Marshaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marshaller.swift; sourceTree = "<group>"; };
 		F79EC3AF21A20723005C10AF /* Requestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestor.swift; sourceTree = "<group>"; };
+		F79EC3B121A2FC72005C10AF /* BankProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankProxy.swift; sourceTree = "<group>"; };
+		F79EC3B321A2FCBA005C10AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 				F7480F9421A1E7B300FFC74C /* ClientRequestHandler.swift */,
 				F79EC3AC21A2039C005C10AF /* Marshaller.swift */,
 				F79EC3AF21A20723005C10AF /* Requestor.swift */,
+				F79EC3B121A2FC72005C10AF /* BankProxy.swift */,
+				F79EC3B321A2FCBA005C10AF /* Constants.swift */,
 			);
 			path = bankmid;
 			sourceTree = "<group>";
@@ -396,6 +402,8 @@
 				F7480F6921A1E76B00FFC74C /* ViewController.swift in Sources */,
 				F79EC3B021A20723005C10AF /* Requestor.swift in Sources */,
 				F79EC3AD21A2039C005C10AF /* Marshaller.swift in Sources */,
+				F79EC3B421A2FCBA005C10AF /* Constants.swift in Sources */,
+				F79EC3B221A2FC72005C10AF /* BankProxy.swift in Sources */,
 				F7480F6721A1E76B00FFC74C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

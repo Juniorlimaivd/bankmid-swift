@@ -10,16 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var balanceLabel: UILabel!
+    var timer = Timer()
+    
+    var proxy = BankProxy()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let requestor = Requestor()
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
+            let balance = self.proxy.getBalance("ACC4")
+            self.balanceLabel.text = String(format: "%.2f", balance)
+            self.balanceLabel.adjustsFontSizeToFitWidth = true
+        })
         
-        let request = requestor.createRequestPacket(methodName: "Transfer", args: "ACC4", "ACC2", 50.0)
-        let ret = requestor.invoke(request)
         
-        //print(ret)
-        
+//        print(ret)
+//
 //        let requestHandler = TCPClientRequestHandler()
 //        requestHandler.connect()
 //        switch requestHandler.client.send(string: "olar") {

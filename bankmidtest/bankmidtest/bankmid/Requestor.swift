@@ -74,9 +74,16 @@ class RequestPkt : Encodable {
 class Requestor: NSObject {
     let marshaller = Marshaller()
     var requestHandler : TCPClientRequestHandler? = nil
+    var host : String
+    var port : Int
+    
+    init(host : String, port : Int) {
+        self.host = host
+        self.port = port
+    }
     
     func getServiceInfo(serviceName : String) -> (String, Int) {
-        let dnsRequester = TCPClientRequestHandler(host: "localhost", port: 5555)
+        let dnsRequester = TCPClientRequestHandler(host: host, port: port)
         dnsRequester.connect()
         
         let d = marshaller.Marshall(object: RequestInfo(name: serviceName))
