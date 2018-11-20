@@ -38,7 +38,7 @@ class BankProxy: NSObject {
         return (ret?.ReturnValue as! String)
     }
     
-    func withdraw(payerID : String, payeeID : String, amount : Float) -> String {
+    func transfer(payerID : String, payeeID : String, amount : Float) -> String {
         let request = requestor.createRequestPacket(methodName: "Transfer", args: payerID, payeeID, amount)
         let ret = requestor.invoke(request)
         

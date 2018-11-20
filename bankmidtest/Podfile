@@ -7,6 +7,7 @@ target 'bankmidtest' do
 
   # Pods for bankmidtest
   pod 'SwiftSocket'
+  pod 'CryptoSwift'
 
   target 'bankmidtestTests' do
     inherit! :search_paths

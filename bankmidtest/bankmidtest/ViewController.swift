@@ -18,26 +18,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        let crypto = Cryptografer()
+        
+        let key = crypto.stringToBytes("6368616e676520746869732070617373776f726420746f206120736563726574")
+        
+        let message = "pudim\n"
+        
+        let encrypted = crypto.encrypt(key: Data(bytes: key!), message: message.data(using: .utf8)!)
+        
+        let decrypted = crypto.decrypt(key: Data(bytes: key!), cypherText: encrypted!)
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
             let balance = self.proxy.getBalance("ACC4")
-            self.balanceLabel.text = String(format: "%.2f", balance)
+            self.balanceLabel.text = String(format: "%f", balance)
             self.balanceLabel.adjustsFontSizeToFitWidth = true
         })
         
-        
-//        print(ret)
-//
-//        let requestHandler = TCPClientRequestHandler()
-//        requestHandler.connect()
-//        switch requestHandler.client.send(string: "olar") {
-//        case .failure(let error):
-//            print(error.localizedDescription)
-//        case .success:
-//            print("show")
-//        }
-//        let data = Data(base64Encoded: "ola")
-//        requestHandler.send(data: data!)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

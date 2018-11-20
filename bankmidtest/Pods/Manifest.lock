@@ -1,16 +1,20 @@
 PODS:
+  - CryptoSwift (0.10.0)
   - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
+  - CryptoSwift
   - SwiftSocket
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CryptoSwift
     - SwiftSocket
 
 SPEC CHECKSUMS:
+  CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 8ad7c57d22ab686f76b91141af2118e342a747ab
+PODFILE CHECKSUM: ad4977adce2d05d1db761395fa4b6feb01f202e1
 
 COCOAPODS: 1.5.3
