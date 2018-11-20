@@ -13,20 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     var timer = Timer()
     
-    var proxy = BankProxy()
+    var proxy = BankProxy(username: "ACC4", password: "pudim")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let crypto = Cryptografer()
-        
-        let key = crypto.stringToBytes("6368616e676520746869732070617373776f726420746f206120736563726574")
-        
-        let message = "pudim\n"
-        
-        let encrypted = crypto.encrypt(key: Data(bytes: key!), message: message.data(using: .utf8)!)
-        
-        let decrypted = crypto.decrypt(key: Data(bytes: key!), cypherText: encrypted!)
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
             let balance = self.proxy.getBalance("ACC4")

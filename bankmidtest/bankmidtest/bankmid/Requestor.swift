@@ -20,9 +20,13 @@ class ConsultPkt : Codable {
 
 class RequestInfo : Codable {
     var Name : String
+    var Username : String
+    var Password : String
     
-    init(name : String) {
+    init(name : String, username : String, password : String) {
         self.Name = name
+        self.Username = username
+        self.Password = password
     }
 }
 
@@ -30,6 +34,21 @@ class Service : Codable {
     var Name : String
     var IP : String
     var Port : Int32
+}
+
+class Request: Codable {
+    var Username : String
+    var Data : Data
+    
+    init(username : String, data : Data) {
+        self.Username = username
+        self.Data = data
+    }
+}
+
+class ConsultReturntPkt: Codable {
+    var ServiceInfo : Service?
+    var Key : String
 }
 
 extension Encodable {
@@ -76,19 +95,26 @@ class Requestor: NSObject {
     var requestHandler : TCPClientRequestHandler? = nil
     var host : String
     var port : Int
+    var username : String
+    var password : String
+    var crypto = Cryptografer()
     
-    init(host : String, port : Int) {
+    init(host : String, port : Int, username : String, password : String) {
         self.host = host
         self.port = port
+        self.username = username
+        self.password = password
     }
     
-    func getServiceInfo(serviceName : String) -> (String, Int) {
+    func getServiceInfo(serviceName : String) -> (String, Int, String) {
         let dnsRequester = TCPClientRequestHandler(host: host, port: port)
         dnsRequester.connect()
         
-        let d = marshaller.Marshall(object: RequestInfo(name: serviceName))
+        let data = marshaller.Marshall(object: RequestInfo(name: serviceName,
+                                                        username: self.username,
+                                                        password: self.password))
         
-        let consultPkt = ConsultPkt(consultType: "consult", data: d)
+        let consultPkt = ConsultPkt(consultType: "consult", data: data)
         
         let pkt = marshaller.Marshall(object: consultPkt)
         
@@ -96,9 +122,13 @@ class Requestor: NSObject {
         
         let retPkt = dnsRequester.receive()
         
-        let serviceData : Service = marshaller.Unmarshall(data: retPkt)!
+        let returnPkt : ConsultReturntPkt = marshaller.Unmarshall(data: retPkt)!
         
-        return (serviceData.IP, Int(serviceData.Port))
+        guard let serviceData = returnPkt.ServiceInfo else {
+            return ("", 0, returnPkt.Key)
+        }
+        
+        return (serviceData.IP, Int(serviceData.Port), returnPkt.Key)
     }
     
     
@@ -115,7 +145,16 @@ class Requestor: NSObject {
     func invoke(_ request : RequestPkt) -> ReturnPkt? {
         var host : String
         var port : Int
-        (host, port) = self.getServiceInfo(serviceName: request.MethodName)
+        var key : String
+        (host, port, key) = self.getServiceInfo(serviceName: request.MethodName)
+        
+        if key == "" {
+            print("Autentication failed. Invalid credentials.")
+            return nil
+        } else if port < 100 {
+            print("Service not found.")
+            return nil
+        }
         
         print(host)
         print(port)
@@ -125,15 +164,37 @@ class Requestor: NSObject {
         self.requestHandler = TCPClientRequestHandler(host: host, port: port)
         self.requestHandler!.connect()
         
-        let data = self.marshaller.Marshall(object: request)
+        var data = self.marshaller.Marshall(object: request)
+        let keyData = crypto.stringToBytes(key)
+        
+        let encryptedData = crypto.encrypt(key: Data(bytes: keyData!), message: data)
+        
+        if encryptedData == nil {
+            print("Failed encrypting.")
+            return nil
+        }
+        
+        let request = Request(username: self.username, data: encryptedData!)
+        
+        data = self.marshaller.Marshall(object: request)
         
         self.requestHandler?.send(data: data)
         
         let ret = self.requestHandler?.receive()
         
-        let dat = ret!
+        guard let dat = ret else {
+            print("Invalid received packet. Verify your requisition.")
+            return nil
+        }
         
-        guard let json = try? JSONSerialization.jsonObject(with: dat, options: []) as? [String: Any] else {
+        let decrypt = self.crypto.decrypt(key: Data(bytes: keyData!), cypherText: dat)
+        
+        guard let pkt = decrypt else {
+            print("Failed Decrypting.")
+            return nil
+        }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: pkt, options: []) as? [String: Any] else {
             // appropriate error handling
             print("error")
             return nil
