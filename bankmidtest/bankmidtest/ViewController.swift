@@ -10,21 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var accIDLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     var timer = Timer()
     
-    var proxy = BankProxy(username: "ACC4", password: "pudim")
+    var username : String? = nil
+    var password : String? = nil
+    
+    var proxy : BankProxy? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.accIDLabel.text = username!
+        self.proxy = BankProxy(username: self.username!, password: self.password!)
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
-            let balance = self.proxy.getBalance("ACC4")
-            self.balanceLabel.text = String(format: "%f", balance)
+            let balance = self.proxy!.getBalance(self.username!)
+            self.balanceLabel.text = String(format: "%.2f", balance)
             self.balanceLabel.adjustsFontSizeToFitWidth = true
         })
         
-        // Do any additional setup after loading the view, typically from a nib.
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

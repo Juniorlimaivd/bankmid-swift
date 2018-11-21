@@ -70,7 +70,7 @@
                     <connections>
                         <outlet property="accountTextField" destination="K0L-bE-zQF" id="ATB-PU-huj"/>
                         <outlet property="passwordTextField" destination="h44-V7-XSY" id="ckM-6m-QED"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="CountSegue" id="DwD-85-a9p"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainSegue" id="DwD-85-a9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxu-zY-T2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +100,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYS-qv-IEh">
-                                <rect key="frame" x="167" y="322" width="114" height="42"/>
+                                <rect key="frame" x="227" y="322" width="114" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
@@ -111,7 +111,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ACCID" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mun-qg-4fx">
-                                <rect key="frame" x="209" y="256" width="114" height="42"/>
+                                <rect key="frame" x="229" y="256" width="114" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
@@ -122,6 +122,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="accIDLabel" destination="mun-qg-4fx" id="Pt7-Bl-caB"/>
                         <outlet property="balanceLabel" destination="SYS-qv-IEh" id="BLK-UI-YIz"/>
                     </connections>
                 </viewController>

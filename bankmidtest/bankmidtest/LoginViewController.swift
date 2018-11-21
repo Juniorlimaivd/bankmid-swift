@@ -47,8 +47,17 @@ class LoginViewController: UIViewController {
             
             self.accountTextField.text = ""
             self.passwordTextField.text = ""
+            
+            return
         }
+        
+        performSegue(withIdentifier: "MainSegue", sender: self)
+        
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination as! ViewController
+        dest.username = self.accountTextField.text!
+        dest.password = self.passwordTextField.text!
+    }
 }
