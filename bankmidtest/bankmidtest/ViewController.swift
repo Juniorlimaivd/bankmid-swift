@@ -14,6 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     var timer = Timer()
     
+    @IBOutlet weak var operationSegment: UISegmentedControl!
+    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var performActionButton: UIButton!
     var username : String? = nil
     var password : String? = nil
     
@@ -43,6 +47,74 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func didChangedSegmented(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didTappedToPerform(_ sender: Any) {
+        switch self.operationSegment.selectedSegmentIndex {
+        case 0:
+            if self.accountTextField.text == "" || self.valueTextField.text == "" {
+                let alert = UIAlertController(title: "Error", message: "Por favor forneça conta e valor.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+                return
+            }
+            
+            let result = self.proxy?.transfer(payerID: self.username!, payeeID: self.accountTextField.text!, amount: Float(self.valueTextField.text!)!)
+            
+            let alert = UIAlertController(title: "Result", message: result, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            break
+            
+        
+            
+        case 1:
+            if self.valueTextField.text == "" {
+                let alert = UIAlertController(title: "Error", message: "Por favor forneça valor.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+                return
+            }
+            
+            let result = self.proxy?.deposit(accountID: self.username!, amount: Float(self.valueTextField.text!)!)
+            
+            let alert = UIAlertController(title: "Result", message: result, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            break
+            
+        case 2:
+            if self.valueTextField.text == "" {
+                let alert = UIAlertController(title: "Error", message: "Por favor forneça valor.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+                return
+            }
+            
+            let result = self.proxy?.withdraw(accountID: self.username!, amount: Float(self.valueTextField.text!)!)
+            
+            let alert = UIAlertController(title: "Result", message: result, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            break
+        default:
+            break
+        }
+    }
+    
 }
 
