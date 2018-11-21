@@ -10,6 +10,7 @@
 		987BE82433A1026F2B7D5316 /* Pods_bankmidtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6279FCB2BC245ABE0D3E39E /* Pods_bankmidtest.framework */; };
 		B790CEAFB08B2E94A5893789 /* Pods_bankmidtestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB9C6DD2377A13FA89C2EDF /* Pods_bankmidtestUITests.framework */; };
 		DC07C9D8EBA5BFEB9D714B85 /* Pods_bankmidtestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6D8DDFE5A876A2962F6A8E /* Pods_bankmidtestTests.framework */; };
+		F707421121A4DCB800201115 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707421021A4DCB800201115 /* LoginViewController.swift */; };
 		F7480F6721A1E76B00FFC74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7480F6621A1E76B00FFC74C /* AppDelegate.swift */; };
 		F7480F6921A1E76B00FFC74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7480F6821A1E76B00FFC74C /* ViewController.swift */; };
 		F7480F6C21A1E76B00FFC74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7480F6A21A1E76B00FFC74C /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		ABAC7C67E8E25902DFD99F29 /* Pods-bankmidtest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bankmidtest.release.xcconfig"; path = "Pods/Target Support Files/Pods-bankmidtest/Pods-bankmidtest.release.xcconfig"; sourceTree = "<group>"; };
 		DCC5C9743056BB1A9880ABDA /* Pods-bankmidtestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bankmidtestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bankmidtestTests/Pods-bankmidtestTests.release.xcconfig"; sourceTree = "<group>"; };
 		E060F61AA5B12D172D3E2D23 /* Pods-bankmidtest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bankmidtest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bankmidtest/Pods-bankmidtest.debug.xcconfig"; sourceTree = "<group>"; };
+		F707421021A4DCB800201115 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F7480F6321A1E76B00FFC74C /* bankmidtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankmidtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7480F6621A1E76B00FFC74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7480F6821A1E76B00FFC74C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		F7480F6521A1E76B00FFC74C /* bankmidtest */ = {
 			isa = PBXGroup;
 			children = (
+				F707421021A4DCB800201115 /* LoginViewController.swift */,
 				F7480F6621A1E76B00FFC74C /* AppDelegate.swift */,
 				F7480F6821A1E76B00FFC74C /* ViewController.swift */,
 				F79EC3AE21A205A4005C10AF /* bankmid */,
@@ -403,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F707421121A4DCB800201115 /* LoginViewController.swift in Sources */,
 				F7480F9521A1E7B300FFC74C /* ClientRequestHandler.swift in Sources */,
 				F7480F6921A1E76B00FFC74C /* ViewController.swift in Sources */,
 				F79EC3B021A20723005C10AF /* Requestor.swift in Sources */,
@@ -587,7 +591,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -603,7 +610,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -620,7 +630,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -638,7 +652,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -655,7 +673,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -672,7 +694,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KVWXUCE6H;
 				INFOPLIST_FILE = bankmidtestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ddsds.bankmidtestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
