@@ -8,6 +8,8 @@
 
 import UIKit
 
+let DNSKEY = "6368612e676520746869732070617373776f726420746f206120736563726e21"
+
 class ConsultPkt : Codable {
     var ConsultType : String
     var Data : Data
@@ -116,11 +118,17 @@ class Requestor: NSObject {
         
         let consultPkt = ConsultPkt(consultType: "consult", data: data)
         
-        let pkt = marshaller.Marshall(object: consultPkt)
+        var pkt = marshaller.Marshall(object: consultPkt)
+        
+        let keyData = crypto.stringToBytes(DNSKEY)
+        
+        pkt = crypto.encrypt(key: Data(bytes: keyData!), message: pkt)!
         
         dnsRequester.send(data: pkt)
         
-        let retPkt = dnsRequester.receive()
+        var retPkt = dnsRequester.receive()
+        
+        retPkt = crypto.decrypt(key: Data(bytes: keyData!), cypherText: retPkt)!
         
         let returnPkt : ConsultReturntPkt = marshaller.Unmarshall(data: retPkt)!
         

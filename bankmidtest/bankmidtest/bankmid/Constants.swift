@@ -10,5 +10,5 @@ import UIKit
 
 struct Constants {
     static let NamingServerAddress = "localhost"
-    static let NamingServerPort = 5555
+    static let NamingServerPort = 5000
 }
